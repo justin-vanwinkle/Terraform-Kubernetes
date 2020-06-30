@@ -54,7 +54,10 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-
+    
+    env: 
+      ARM_ACCESS_KEY: ${{ secrets.TF_ARM_ACCESS_KEY }}
+    
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
@@ -71,6 +74,17 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az storage container create --name $(Environment) --account-name $(TerraformBackend.StorageAccount)
+          ACCESS_KEY=$(az storage account keys list -g $(TerraformBackend.ResourceGroup) -n $(TerraformBackend.StorageAccount) | jq -r ".[0].value")
+          echo "setting storage account key variable"
+          echo "##vso[task.setvariable variable=ACCESS_KEY;issecret=true]$ACCESS_KEY"
+        
+    
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
