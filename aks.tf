@@ -10,17 +10,17 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix          = var.dns_prefix
 
   default_node_pool {
-    name       = var.node_pool_name
-    min_count   = var.min_node_count
-    max_count   = var.max_node_count
-    vm_size    = var.node_pool_vm_size
+    name                = var.node_pool_name
+    min_count           = var.min_node_count
+    max_count           = var.max_node_count
+    vm_size             = var.node_pool_vm_size
     enable_auto_scaling = true
   }
 
   role_based_access_control {
     enabled = true
   }
-  
+
   identity {
     type = "SystemAssigned"
   }
