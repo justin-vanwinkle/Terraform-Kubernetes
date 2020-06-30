@@ -1,4 +1,4 @@
-# terraform-k8s
+# Terraform for Azure Kubernetes Service
 If you have a need to quickly spin up Kubernetes clusters regularly, fork this repository and do the following things.
 
 Dependencies:
