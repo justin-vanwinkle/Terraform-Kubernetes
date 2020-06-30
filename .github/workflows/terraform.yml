@@ -73,17 +73,14 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
+    
+    # Create container in storage account (or ensure it was previously created)
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az storage container create --name $(Environment) --account-name $(TerraformBackend.StorageAccount)
-          ACCESS_KEY=$(az storage account keys list -g $(TerraformBackend.ResourceGroup) -n $(TerraformBackend.StorageAccount) | jq -r ".[0].value")
-          echo "setting storage account key variable"
-          echo "##vso[task.setvariable variable=ACCESS_KEY;issecret=true]$ACCESS_KEY"
-        
+          az storage container create --name tfstate --account-name sttfstate1        
     
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token 
     - name: Setup Terraform
