@@ -5,3 +5,8 @@ terraform {
     key                  = "aks.tfstate"
   }
 }
+
+provider "azurerm" {
+  version = "~> 2.16.0"
+  features {}
+}
