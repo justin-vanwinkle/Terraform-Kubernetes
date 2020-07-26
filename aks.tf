@@ -12,7 +12,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   # (Optional) Addons for AKS
   addon_profile {
     aci_connector_linux {
-      enabled = true
+      enabled     = true
       subnet_name = azurerm_subnet.aci.name
     }
 
@@ -28,7 +28,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
       enabled = true
     }
     oms_agent {
-      enabled = true
+      enabled                    = true
       log_analytics_workspace_id = azurerm_log_analytics_workspace.law.id
     }
   }
@@ -37,21 +37,21 @@ resource "azurerm_kubernetes_cluster" "aks" {
   # api_server_authorized_ip_ranges { }
 
   autoscaler_profile {
-    balance_similar_node_groups = false
-    max_graceful_termination_sec = 600
-    scale_down_delay_after_add = "10m"
-    scale_down_delay_after_delete = "10s"
-    scale_down_delay_after_failure = "3m"
-    scan_interval = "10s"
-    scale_down_unneeded = "10m"
-    scale_down_unready = "20m"
+    balance_similar_node_groups      = false
+    max_graceful_termination_sec     = 600
+    scale_down_delay_after_add       = "10m"
+    scale_down_delay_after_delete    = "10s"
+    scale_down_delay_after_failure   = "3m"
+    scan_interval                    = "10s"
+    scale_down_unneeded              = "10m"
+    scale_down_unready               = "20m"
     scale_down_utilization_threshold = 0.5
   }
 
   # preview feature
   # enable_pod_security_policy = true
 
-  
+
   default_node_pool {
     name                = var.node_pool_name
     min_count           = var.min_node_count
