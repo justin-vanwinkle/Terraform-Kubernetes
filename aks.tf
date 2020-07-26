@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   # (Optional) The IP ranges to whitelist for incoming traffic to the masters.
   # api_server_authorized_ip_ranges { }
 
-  autoscaler_profile {
+  auto_scaler_profile {
     balance_similar_node_groups      = false
     max_graceful_termination_sec     = 600
     scale_down_delay_after_add       = "10m"
