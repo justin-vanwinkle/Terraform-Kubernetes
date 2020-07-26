@@ -17,9 +17,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
     }
 
     # preview feature
-    azure_policy {
-      enabled = true
-    }
+    # azure_policy {
+    #   enabled = true
+    # }
 
     http_application_routing {
       enabled = true
@@ -49,7 +49,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   # preview feature
-  enable_pod_security_policy = true
+  # enable_pod_security_policy = true
 
   
   default_node_pool {
