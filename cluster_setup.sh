@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get credentials to connect with cluster
-az aks get-credentials --name aks-my-cluster --resource-group rg-my-aks
+az aks get-credentials --name aks-eastus-prod --resource-group rg-aks-eastus-prod
 
 #  install helm cli
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3

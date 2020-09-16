@@ -1,6 +1,6 @@
 variable "resource_group_name" {
   type    = string
-  default = "rg-my-aks"
+  default = "rg-aks-eastus-prod"
 }
 variable "location" {
   type    = string
@@ -8,11 +8,11 @@ variable "location" {
 }
 variable "cluster_name" {
   type    = string
-  default = "aks-my-cluster"
+  default = "aks-eastus-prod"
 }
 variable "dns_prefix" {
   type    = string
-  default = "myaksdns"
+  default = "selfhub"
 }
 
 variable "node_pool_name" {
@@ -29,7 +29,7 @@ variable "max_node_count" {
 }
 variable "node_pool_vm_size" {
   type    = string
-  default = "Standard_D2_v2"
+  default = "Standard_B2s"
 }
 
 variable "tags" {
