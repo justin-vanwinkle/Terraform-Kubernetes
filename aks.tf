@@ -1,5 +1,5 @@
 resource "azurerm_kubernetes_cluster" "aks" {
-  name                = "example-aks1"
+  name                = "aks"
   location            = azurerm_resource_group.aks.location
   resource_group_name = azurerm_resource_group.aks.name
   dns_prefix          = "aks"
