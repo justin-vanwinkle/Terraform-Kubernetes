@@ -1,6 +1,7 @@
 terraform {
  backend "azurerm" {
-   storage_account_name = "sttfstate1"
+   resource_group_name = "blog"
+   storage_account_name = "stkubernet"
    container_name       = "tfstate"
    key                  = "aks.tfstate"
  }
