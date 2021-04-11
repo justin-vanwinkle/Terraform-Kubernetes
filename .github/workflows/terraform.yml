@@ -79,12 +79,12 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     # Create container in storage account (or ensure it was previously created)
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: |
-          az storage container create --name tfstate --account-name sttfstate1        
+    # - name: Azure CLI script
+    #   uses: azure/CLI@v1
+    #   with:
+    #     azcliversion: 2.0.72
+    #     inlineScript: |
+    #       az storage container create --name tfstate --account-name sttfstate1        
     
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token 
     - name: Setup Terraform
